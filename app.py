@@ -43,7 +43,19 @@ def convert():
                 f.write(file_bytes)
             
             # LibreOffice Headless Befehl ausführen
-            cmd = ["libreoffice", "--headless", "--convert-to", "pdf", "--outdir", "/tmp", input_path]
+            cmd = [
+                "libreoffice",
+                "--headless",
+                "--invisible",
+                "--nodefault",
+                "--nofirststartwizard",
+                "--nolockcheck",
+                "--nologo",
+                "--norestore",
+                "--convert-to", "pdf",
+                "--outdir", "/tmp",
+                input_path
+            ]
             subprocess.run(cmd, check=True)
             
             output_path = f"/tmp/{filename}.pdf"
